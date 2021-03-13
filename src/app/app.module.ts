@@ -13,6 +13,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatDividerModule } from "@angular/material/divider";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { SampleContentComponent } from "./sample-content/sample-content.component";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { SampleContentComponent } from "./sample-content/sample-content.componen
     MatCardModule,
     MatGridListModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   declarations: [AppComponent, LoadingSpinnerComponent, SampleContentComponent],
   bootstrap: [AppComponent]

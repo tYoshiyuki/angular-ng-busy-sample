@@ -1,9 +1,21 @@
 <mat-card>
   <ng-container [ngBusy]="allBusy">
-    <button mat-raised-button color="primary" (click)="onAllButtonClick()">All</button>
+    <h2>Parent Container</h2>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="onAllButtonClick()">
+        <mat-icon>search</mat-icon>
+        Busy Parent
+      </button>
+    </div>
     <mat-card>
       <ng-container [ngBusy]="partialBusy">
-        <button mat-raised-button color="primary" (click)="onPartialButtonClick()">Partial</button>
+        <h3>Child Container</h3>
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="onPartialButtonClick()">
+            <mat-icon>search</mat-icon>
+            Busy Child
+          </button>
+        </div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id</th>
