@@ -21,8 +21,14 @@ export class SampleContentComponent implements OnInit {
   /**
    * ng-busyの設定です。
    */
-  partialBusy: IBusyConfig = { template: LoadingSpinnerComponent };
-  allBusy: IBusyConfig = { template: LoadingSpinnerComponent };
+  partialBusy: IBusyConfig = {
+    template: LoadingSpinnerComponent,
+    busy: []
+  };
+  allBusy: IBusyConfig = {
+    template: LoadingSpinnerComponent,
+    busy: []
+  };
 
   /**
    * テーブル用の設定です。
@@ -35,13 +41,15 @@ export class SampleContentComponent implements OnInit {
   ngOnInit() {}
 
   onPartialButtonClick() {
-    const subscription = this.getUsers().subscribe(x => (this.dataSource = x));
-    this.partialBusy.busy = [subscription];
+    this.partialBusy.busy.push(
+      this.getUsers().subscribe(x => (this.dataSource = x))
+    );
   }
 
   onAllButtonClick() {
-    const subscription = this.getUsers().subscribe(x => (this.dataSource = x));
-    this.allBusy.busy = [subscription];
+    this.allBusy.busy.push(
+      this.getUsers().subscribe(x => (this.dataSource = x))
+    );
   }
 
   /**
