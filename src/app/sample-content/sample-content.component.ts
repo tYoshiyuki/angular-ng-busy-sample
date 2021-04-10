@@ -3,13 +3,22 @@ import { IBusyConfig } from "ng-busy";
 import { delay } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { LoadingSpinnerComponent } from "../loading-spinner/loading-spinner.component";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 interface SampleUser {
   id: number;
   name: string;
   emai: string;
   phone: string;
+}
+
+class BusyConfigFactory {
+  static create(): IBusyConfig {
+    return {
+      template: LoadingSpinnerComponent,
+      busy: []
+    };
+  }
 }
 
 @Component({
@@ -21,14 +30,8 @@ export class SampleContentComponent implements OnInit {
   /**
    * ng-busyの設定です。
    */
-  partialBusy: IBusyConfig = {
-    template: LoadingSpinnerComponent,
-    busy: []
-  };
-  allBusy: IBusyConfig = {
-    template: LoadingSpinnerComponent,
-    busy: []
-  };
+  partialBusy: IBusyConfig = BusyConfigFactory.create();
+  allBusy: IBusyConfig = BusyConfigFactory.create();
 
   /**
    * テーブル用の設定です。
